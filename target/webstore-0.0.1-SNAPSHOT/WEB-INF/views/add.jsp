@@ -10,19 +10,62 @@
 
     <title>Advertisement</title>
 </head>
-<body>
-<section>
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Details</h1>
-        </div>
-    </div>
-</section>
-<section class="container">
-    <div class="row">
-        <div class="col-md-5">
 
-            <h3>${add.title}</h3><br>
+
+
+<body>
+
+
+
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top" >
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home Rental</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="/">Home</a></li>
+                <li ><a href="/adds">All Adds</a> </li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="active"><a href="/adds/new" >Place Add </a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+
+<div class="container-fluid" >
+<div class="well">
+    <ol class="breadcrumb" >
+        <li><a href="/">Home</a></li>
+        <li><a href="/adds">Adds</a></li>
+        <li class="active">${add.title}</li>
+    </ol>
+
+    <h1>    ${add.title}</h1>
+    <p><span class="label label-warning">${add.purpose}</span></p>
+
+</div>
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-8">
+
 
 
             <%
@@ -34,6 +77,10 @@
                 <c:param name="addId" value="${add.id}"/>
             </c:url>
             <img height="433" width="666" src="${imgAdd}" aria-expanded="true"><br><br><br>
+
+        </div>
+        <br><br>
+        <div class="col-xs-4 well">
 
             <p>
                 <strong>Location : </strong><span class="label label-warning">${add.location}</span>
@@ -61,7 +108,7 @@
             </p>
         </div>
     </div>
-</section>
+</div>
 
 
 </body>

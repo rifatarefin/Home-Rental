@@ -15,5 +15,5 @@ INSERT INTO ADD VALUES (1234,'Apartment for Rent',5678,'John','Residential',
 INSERT INTO ADD VALUES (1235,'Flat for Rent',5679,'Smith','Residential',
                     'Rent','Gulshan','Dhaka','Road 4/5',28000,1400,4,3,FILE_READ('/home/rifat/Pictures/pic/17966030_10154549452768157_1983993495729644372_o.jpg') );
 
-INSERT INTO ADD VALUES (1236,'Apartment in Banani',5680,'Mark','Commercial',
+INSERT INTO ADD VALUES (1236,'Commercial Space for Rent',5680,'Mark','Commercial',
                     'Rent','Banani','Dhaka','Road 3/A',50000,2000,NULL ,NULL,FILE_READ('/home/rifat/Pictures/pic/18194702_10154589029303157_174319158851028638_n.jpg') );

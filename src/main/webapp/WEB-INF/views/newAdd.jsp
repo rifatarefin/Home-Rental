@@ -4,13 +4,50 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link rel="stylesheet"   href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <title>Add</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+    <title>New Add</title>
 </head>
 <body>
+
+
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home Rental</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="/">Home</a></li>
+                <li ><a href="/adds">All Adds</a> </li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="active"><a href="/adds/new" >Place Add </a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/adds">Adds</a></li>
+    <li class="active">New Add</li>
+</ol>
+
 <section>
-    <div class="jumbotron">
-        <div class="container">
+    <div class="container-fluid">
+        <div class="well">
             <h1>Advertisement</h1>
             <p>Place New Add</p>
         </div>

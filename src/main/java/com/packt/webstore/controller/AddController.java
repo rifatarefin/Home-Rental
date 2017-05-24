@@ -83,6 +83,21 @@ public class AddController {
         return "redirect:/adds";
     }
 
+
+	@RequestMapping("/adds/{propertyType}")
+	public String getAddsByPropertyType(Model model, @PathVariable("propertyType") String propertyType) {
+		model.addAttribute("adds", addRepository.getAddsByPropertyType(propertyType));
+		return "adds";
+	}
+
+
+
+
+
+
+	//////////////////
+
+
 	@RequestMapping("/products")
 	public String list(Model model) {
 	   model.addAttribute("products", productService.getAllProducts());

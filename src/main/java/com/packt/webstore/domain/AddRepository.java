@@ -1,13 +1,11 @@
 package com.packt.webstore.domain;
 
-import com.packt.webstore.domain.repository.impl.InMemoryProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.io.IOException;
-import java.io.InputStream;
+
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,14 +63,26 @@ public class AddRepository {
 
     }
 
+    public List<Add>getAddsByPropertyType(String propertyType)
+    {
+        String SQL="SELECT * FROM ADD WHERE PROPERTY_TYPE =:propertyType";
+        Map<String, Object> params= new HashMap<>();
+        params.put("propertyType",propertyType);
+        return jdbcTemplate.query(SQL,params,new ProductMapper());
+    }
+
+//    public List<Product> getProductsByCategory(String category) {
+//        String SQL = "SELECT * FROM PRODUCTS WHERE CATEGORY = :category";
+//        Map<String, Object> params = new HashMap<String, Object>();
+//        params.put("category", category);
+//
+//        return jdbcTemplate.query(SQL, params, new ProductMapper());
+//    }
+
 
     public void placeNewAdd(Add newAdd) {
 
-//        try {
-//            file=newAdd.getImagePath().getInputStream();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
         String SQL = "INSERT INTO ADD (ID, "
                 + "OWNER_ID,"
                 + "OWNERS_NAME,"
