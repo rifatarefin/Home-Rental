@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="69cff64e-d015-460b-aba4-fc6db51a1228" />
+          <option name="name" value="DDL data source" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/src/main/resources/db/sql/create-table.sql" />
+              <option value="file://$PROJECT_DIR$/src/main/resources/db/sql/insert-data.sql" />
+            </array>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
