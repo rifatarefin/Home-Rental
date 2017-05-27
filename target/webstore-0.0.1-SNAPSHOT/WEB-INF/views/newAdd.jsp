@@ -54,6 +54,7 @@
     </div>
 </section>
 <section class="container">
+
     <form:form  method="POST" modelAttribute="newAdd" class="form-horizontal" enctype="multipart/form-data">
         <fieldset>
             <legend>Fill up the required fields</legend>
@@ -62,21 +63,21 @@
             <div class="form-group col-md-5" >
                 <label class="control-label col-lg-2 col-lg-2" for="id">Add ID</label>
                 <div class="col-lg-10">
-                    <form:input id="id" path="id" type="text" class="form:input-large"/>
+                    <form:input id="id" path="id" type="text" class="form:input-large form-control"/>
                 </div>
             </div>
 
             <div class="form-group col-md-5">
                 <label class="control-label col-lg-2 col-lg-2" for="title">Give a Title</label>
                 <div class="col-lg-10">
-                    <form:input id="title" path="title" type="text" class="form:input-large"/>
+                    <form:input id="title" path="title" type="text" class="form:input-large form-control"/>
                 </div>
             </div>
 
             <div class="form-group col-md-5">
             <label class="control-label col-lg-2" for="propertyType">Property Type</label>
-            <div class="col-lg-10">
-            <form:radiobutton id="propertyType" path="propertyType" value="Residential"  />Residential
+            <div class="col-lg-10 " >
+            <form:radiobutton id="propertyType" path="propertyType" value="Residential" checked="checked"  />Residential
             <form:radiobutton id="propertyType" path="propertyType" value="Commercial" />Commercial
             </div>
             </div>
@@ -85,7 +86,7 @@
             <div class="form-group col-md-5">
                 <label class="control-label col-lg-2" for="purpose">Purpose</label>
                 <div class="col-lg-10">
-                    <form:radiobutton id="purpose" path="purpose" value="Rent"  />For Rent
+                    <form:radiobutton id="purpose" path="purpose" value="Rent" checked="checked"  />For Rent
                     <form:radiobutton id="purpose" path="purpose" value="Sale" />For Sale
                 </div>
             </div>
@@ -95,49 +96,49 @@
             <div class="form-group col-md-5" >
                 <label class="control-label col-lg-2" for="details">Details</label>
                 <div class="col-lg-10">
-                    <form:textarea id="details" path="details" rows = "2"/>
+                    <form:textarea id="details" path="details" rows = "4" class="form-control"/>
                 </div>
             </div>
 
             <div class="form-group col-md-5">
                 <label class="control-label col-lg-2 col-lg-2" for="location">Location</label>
                 <div class="col-lg-10">
-                    <form:input id="location" path="location" type="text" class="form:input-large"/>
+                    <form:input id="location" path="location" type="text" class="form:input-large form-control"/>
                 </div>
             </div>
 
             <div class="form-group col-md-5">
                 <label class="control-label col-lg-2 col-lg-2" for="city">City</label>
                 <div class="col-lg-10">
-                    <form:input id="city" path="city" type="text" class="form:input-large"/>
+                    <form:input id="city" path="city" type="text" class="form:input-large form-control"/>
                 </div>
             </div>
 
             <div class="form-group col-md-5">
                 <label class="control-label col-lg-2 col-lg-2" for="price">Price</label>
                 <div class="col-lg-10">
-                    <form:input id="price" path="price" type="text" class="form:input-large"/>
+                    <form:input id="price" path="price" type="number" value="20000" class="form:input-large form-control"/>
                 </div>
             </div>
 
             <div class="form-group col-md-5">
-                <label class="control-label col-lg-2 col-lg-2" for="sqFeet">Flat Size</label>
+                <label class="control-label col-lg-2 col-lg-2" for="sqFeet">Flat Size(Square Feet)</label>
                 <div class="col-lg-10">
-                    <form:input id="sqFeet" path="sqFeet" type="text" class="form:input-large"/>
+                    <form:input id="sqFeet" path="sqFeet" type="number" value="1500" class="form:input-large form-control"/>
                 </div>
             </div>
 
             <div class="form-group col-md-5">
                 <label class="control-label col-lg-2 col-lg-2" for="bed">Number of Bedrooms</label>
                 <div class="col-lg-10">
-                    <form:input id="bed" path="bed" type="text" class="form:input-large"/>
+                    <form:input id="bed" path="bed" type="number" value="3" class="form:input-large form-control"/>
                 </div>
             </div>
 
             <div class="form-group col-md-5">
                 <label class="control-label col-lg-2 col-lg-2" for="bath">Number of Bathrooms</label>
                 <div class="col-lg-10">
-                    <form:input id="bath" path="bath" type="text" class="form:input-large"/>
+                    <form:input id="bath" path="bath" type="number" value="2" class="form:input-large form-control"/>
                 </div>
             </div>
 
@@ -146,7 +147,7 @@
                 <label class="control-label col-lg-2" for="part"> Add an Image
                 </label>
                 <div class="col-lg-10">
-                    <form:input id="part" path="image" type="file" class="form:input-large"  />
+                    <form:input id="part" path="image" type="file" class="form:input-large "  />
                 </div>
             </div>
 

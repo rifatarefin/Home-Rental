@@ -71,13 +71,14 @@ public class AddRepository {
         return jdbcTemplate.query(SQL,params,new ProductMapper());
     }
 
-//    public List<Product> getProductsByCategory(String category) {
-//        String SQL = "SELECT * FROM PRODUCTS WHERE CATEGORY = :category";
-//        Map<String, Object> params = new HashMap<String, Object>();
-//        params.put("category", category);
-//
-//        return jdbcTemplate.query(SQL, params, new ProductMapper());
-//    }
+
+
+
+    public List<Add> getAddssByFilter(Map<String, List<String>> filterParams) {
+        String SQL = "SELECT * FROM ADD WHERE PROPERTY_TYPE IN ( :ptype ) AND PURPOSE IN ( :purpose)";
+
+        return jdbcTemplate.query(SQL, filterParams, new ProductMapper());
+    }
 
 
     public void placeNewAdd(Add newAdd) {
@@ -103,7 +104,7 @@ public class AddRepository {
         params.put("ownerid",newAdd.getOwnerId());
         params.put("ownername",newAdd.getOwnersName());
         params.put("proptype",newAdd.getPropertyType());
-        params.put("purpose",newAdd.getPropertyType());
+        params.put("purpose",newAdd.getPurpose());
         params.put("location",newAdd.getLocation());
         params.put("city",newAdd.getCity());
         params.put("details",newAdd.getDetails());

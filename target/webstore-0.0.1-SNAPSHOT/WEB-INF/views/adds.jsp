@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -91,7 +92,7 @@
                 <ul>
 
                     <li>
-                        <h2>Categories</h2>
+                        <h4>Categories</h4>
 
                         <h5>Property Type</h5>
                         <ul>
@@ -100,6 +101,25 @@
 
                         </ul>
 
+                    </li>
+                    <li>
+                        <h4>Custom Search</h4>
+                        <form:form  method="POST" modelAttribute="search" class="form-horizontal" >
+                            <fieldset>
+                                    <div class="form-group " >
+                                        <label class="control-label" for="minPrice">Minimum Price</label>
+                                        <div >
+                                            <form:input id="minPrice" path="minPrice" type="text" class="form:input-large form-control"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div >
+                                            <input type="submit" id="btnAdd" class="btn btn-primary" value ="Search"/>
+                                        </div>
+                                    </div>
+                            </fieldset>
+                        </form:form>
                     </li>
                     <%--<li>--%>
                         <%--<h2>Blogroll</h2>--%>

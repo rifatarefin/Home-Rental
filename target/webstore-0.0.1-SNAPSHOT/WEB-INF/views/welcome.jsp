@@ -61,7 +61,7 @@
 
 
 
-<div class="container">
+<div class="container-fluid">
      <div class="jumbotron">
                   <h1> ${greeting} </h1>
                   <p> ${tagline} </p>
