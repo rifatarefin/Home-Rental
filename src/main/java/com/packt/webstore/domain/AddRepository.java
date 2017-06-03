@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,6 +79,24 @@ public class AddRepository {
         String SQL = "SELECT * FROM ADD WHERE PROPERTY_TYPE IN ( :ptype ) AND PURPOSE IN ( :purpose)";
 
         return jdbcTemplate.query(SQL, filterParams, new ProductMapper());
+    }
+
+    public List<Add> getAddsByCustomSearch(Search search)
+    {
+        String SQL="SELECT * FROM ADD WHERE PRICE >= ( :minprice) AND" +
+                " PRICE <=( :maxprice) AND CITY IN ( :cities) AND BED >= ( :minbed) AND BED <=( :maxbed) AND " +
+                "BATH >= ( :minbath) AND BATH <= ( :maxbath)";
+        if(search.getCities().size()==0)search.setCities(search.getAllCities());
+
+        Map<String,Object> params=new HashMap<>();
+        params.put("minprice",search.getMinPrice());
+        params.put("maxprice",search.getMaxPrice());
+        params.put("cities",search.getCities());
+        params.put("minbed",search.getMinBed());
+        params.put("maxbed",search.getMaxBed());
+        params.put("minbath",search.getMinBath());
+        params.put("maxbath",search.getMaxBath());
+        return jdbcTemplate.query(SQL,params,new ProductMapper());
     }
 
 

@@ -17,3 +17,6 @@ INSERT INTO ADD VALUES (1235,'Flat for Rent',5679,'Smith','Residential',
 
 INSERT INTO ADD VALUES (1236,'Commercial Space for Rent',5680,'Mark','Commercial',
                     'Rent','Banani','Dhaka','Road 3/A',50000,2000,NULL ,NULL,FILE_READ('/home/rifat/Pictures/pic/18194702_10154589029303157_174319158851028638_n.jpg') );
+
+INSERT INTO ADD VALUES (1237,'Duplex Flat for Sale',5670,'Roger', 'Residential',
+                             'Sale', 'Sylhet', 'Sylhet', 'ABC Road',15000000, 2000, 5,4,FILE_READ('/home/rifat/Pictures/pic/18252189_1151006505004353_6266071961596592128_n.jpg'));

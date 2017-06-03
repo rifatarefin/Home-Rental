@@ -1,8 +1,6 @@
 package com.packt.webstore.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -18,13 +16,10 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import com.packt.webstore.domain.Product;
-import com.packt.webstore.domain.repository.ProductRepository;
 import com.packt.webstore.service.ProductService;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
-import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -65,7 +60,13 @@ public class AddController {
     @InitBinder("search")
     public void initialiseBinderSearch(WebDataBinder binder)
     {
-        binder.setAllowedFields("minPrice");
+        binder.setAllowedFields("minPrice",
+                "maxPrice",
+                "cities",
+                "minBed",
+                "maxBed",
+                "minBath",
+                "maxBath");
     }
 
 
@@ -92,18 +93,26 @@ public class AddController {
     public String list2(Model model) {
         Search search = new Search();
 
+
+        model.addAttribute("allCities",search.getAllCities());
         model.addAttribute("adds", addRepository.getAllAdds());
         model.addAttribute("search", search);
+
 
         return "adds";
     }
 
     @RequestMapping(value = "/adds", method = RequestMethod.POST)
-    public String submitSearch(@ModelAttribute("search") Search search, BindingResult result) {
+    public String submitSearch(@ModelAttribute("search") Search search, BindingResult result,Model model) {
+
+
+        model.addAttribute("adds",addRepository.getAddsByCustomSearch(search));
+        model.addAttribute("allCities",search.getAllCities());
+        System.out.println(search.getMinBed());
 
 
 
-        return "redirect:/adds";
+        return "adds";
     }
 
 
