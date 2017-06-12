@@ -103,7 +103,7 @@ public class AddController {
     }
 
     @RequestMapping(value = "/adds", method = RequestMethod.POST)
-    public String submitSearch(@ModelAttribute("search") Search search, BindingResult result,Model model) {
+    public String submitSearch(@ModelAttribute("search") Search search, Model model) {
 
 
         model.addAttribute("adds",addRepository.getAddsByCustomSearch(search));
