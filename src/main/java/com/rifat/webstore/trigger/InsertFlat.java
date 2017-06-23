@@ -21,6 +21,13 @@ public class InsertFlat implements Trigger {
     @Override
     public void fire(Connection conn, Object[] oldRow, Object[] newRow) throws SQLException {
         Object ownerid = newRow[2];
+        Object ownername=newRow[3];
+        Object proptype=newRow[4];
+        Object location= newRow[6];
+        Object city=newRow[7];
+        Object sqFeet=newRow[10];
+        Object bed=newRow[11];
+        Object bath=newRow[12];
 
        // String SQL = "INSERT INTO FLAT VALUES (:fid, :ownerid, :ownername, :proptype, :location, :city, :sq, :bed, :bath)";
         String SQL="INSERT INTO FLAT VALUES (DEFAULT ,?,?,?,?,?,?,?,?)";
@@ -37,7 +44,7 @@ public class InsertFlat implements Trigger {
         statement.executeUpdate();
 
         System.out.println("fire");
-        //jdbcTemplate.update(SQL,params);
+
 
 
     }
