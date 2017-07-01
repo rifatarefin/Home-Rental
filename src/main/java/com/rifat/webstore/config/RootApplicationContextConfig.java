@@ -10,12 +10,14 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.DatabasePopulator;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
-
+@EnableWebMvc
 @Configuration
 @ComponentScan("com.rifat.webstore")
+//@Import(SecurityConfig.class)
 public class RootApplicationContextConfig {
 
    @Bean

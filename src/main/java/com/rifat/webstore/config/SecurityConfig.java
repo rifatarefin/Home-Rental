@@ -7,21 +7,33 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import javax.sql.DataSource;
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    DataSource dataSource;
  
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("john").password("pa55word").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("root123").roles("USER","ADMIN");
+
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery("select username, password, enabled from users where username=?")
+                .authoritiesByUsernameQuery("select username, role from user_role where username=?");
+
+//        auth.inMemoryAuthentication().withUser("john").password("pa55word").roles("USER");
+//        auth.inMemoryAuthentication().withUser("admin").password("root123").roles("USER","ADMIN");
+        
     }
      
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
   
        httpSecurity.formLogin().loginPage("/login")
-                   .usernameParameter("userId")
+                   .usernameParameter("username")
                    .passwordParameter("password");
        
        httpSecurity.formLogin().defaultSuccessUrl("/adds")
@@ -33,8 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        
        httpSecurity.authorizeRequests()
           .antMatchers("/").permitAll()
-          .antMatchers("/**/new").access("hasRole('ADMIN')")
-          .antMatchers("/**/adds/**").access("hasRole('USER')");
+          .antMatchers("/**/new").access("hasRole('ROLE_ADMIN')")
+          .antMatchers("/**/adds/**").access("hasRole('ROLE_USER')");
        
        httpSecurity.csrf().disable();
     }

@@ -48,9 +48,9 @@
                      </c:if>
                      
                      <div class="input-group input-sm">
-                        <label class="input-group-addon" for="userId"><i
+                        <label class="input-group-addon" for="username"><i
                            class="fa fa-user"></i></label> -<input type="text" class="form-control"
-                           id="userId" name="userId" placeholder="Enter Username"
+                           id="username" name="username" placeholder="Enter Username"
                            required>
                      </div>
                      <div class="input-group input-sm">
