@@ -34,6 +34,7 @@ public class AddRepository {
 
             Add add = new Add();
             add.setId(rs.getInt("ID"));
+            add.setFlatId(rs.getInt("FLAT_ID"));
             add.setTitle(rs.getString("TITLE"));
             add.setOwnerId(rs.getInt("OWNER_ID"));
             add.setOwnersName(rs.getString("OWNERS_NAME"));
@@ -102,6 +103,8 @@ public class AddRepository {
 
 
         String SQL = "INSERT INTO ADD (ID, "
+                + "TITLE,"
+                + "FLAT_ID,"
                 + "OWNER_ID,"
                 + "OWNERS_NAME,"
                 + "PROPERTY_TYPE,"
@@ -114,10 +117,12 @@ public class AddRepository {
                 + "BED,"
                 + "BATH,"
                 +"IMAGE) "
-                + "VALUES (:id, :ownerid, :ownername, :proptype, :purpose, :location, :city, :details, :price, :sqfeet, :bed, :bath, :image)";
+                + "VALUES (DEFAULT , :title, :flatid, :ownerid, :ownername, :proptype, :purpose," +
+                " :location, :city, :details, :price, :sqfeet, :bed, :bath, :image)";
 
         Map<String, Object> params = new HashMap<>();
-        params.put("id",newAdd.getId());
+        params.put("title",newAdd.getTitle());
+        params.put("flatid",newAdd.getFlatId());
         params.put("ownerid",newAdd.getOwnerId());
         params.put("ownername",newAdd.getOwnersName());
         params.put("proptype",newAdd.getPropertyType());

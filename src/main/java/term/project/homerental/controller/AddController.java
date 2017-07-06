@@ -40,7 +40,7 @@ public class AddController {
                 "category",
                 "unitsInStock",
                 "condition",
-                "id",
+                "flatId",
                 "title",
                 "propertyType",
                 "purpose",
@@ -136,7 +136,11 @@ public class AddController {
 
     @RequestMapping("/adds/{propertyType}")
     public String getAddsByPropertyType(Model model, @PathVariable("propertyType") String propertyType) {
+
+        Search search=new Search();
+        model.addAttribute("allCities", search.getAllCities());
         model.addAttribute("adds", addRepository.getAddsByPropertyType(propertyType));
+        model.addAttribute("search", search);
         return "adds";
     }
 

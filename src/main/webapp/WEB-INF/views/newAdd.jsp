@@ -61,9 +61,9 @@
 
             <div class="row">
             <div class="form-group col-md-5" >
-                <label class="control-label col-lg-2 col-lg-2" for="id">Add ID</label>
+                <label class="control-label col-lg-2 col-lg-2" for="flatId">Flat ID</label>
                 <div class="col-lg-10">
-                    <form:input id="id" path="id" type="text" class="form:input-large form-control"/>
+                    <form:input id="flatId" path="flatId" type="text" class="form:input-large form-control"/>
                 </div>
             </div>
 

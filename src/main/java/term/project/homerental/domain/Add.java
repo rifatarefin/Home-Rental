@@ -1,8 +1,6 @@
 package term.project.homerental.domain;
 
 
-import javax.servlet.http.Part;
-import java.io.InputStream;
 import java.io.Serializable;
 
 /**
@@ -10,6 +8,7 @@ import java.io.Serializable;
  */
 public class Add implements Serializable {
     private int id;
+    private int flatId;
     private String title;
     private int ownerId;
     private String ownersName;
@@ -25,7 +24,13 @@ public class Add implements Serializable {
     private int bath;
     private byte[] image;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getPurpose() {
         return purpose;
@@ -51,12 +56,12 @@ public class Add implements Serializable {
         this.title = title;
     }
 
-    public int getId() {
-        return id;
+    public int getFlatId() {
+        return flatId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setFlatId(int flatId) {
+        this.flatId = flatId;
     }
 
     public int getOwnerId() {
