@@ -1,4 +1,4 @@
-<%@ page import="com.rifat.webstore.domain.Add" %>
+<%@ page import="term.project.homerental.domain.Add" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>

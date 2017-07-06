@@ -70,4 +70,4 @@ CREATE TRIGGER INSERT_FLAT
   BEFORE INSERT
   ON ADD
   FOR EACH ROW
-  CALL "com.rifat.webstore.trigger.InsertFlat"
+  CALL "term.project.homerental.trigger.InsertFlat"
