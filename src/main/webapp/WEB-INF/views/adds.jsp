@@ -110,8 +110,15 @@
 
                             <h5>Property Type</h5>
                             <ul>
-                                <li><a href="/adds/Residential">Residential</a></li>
-                                <li><a href="/adds/Commercial">Commercial</a></li>
+                                <li><a href="/adds/propertyType/Residential">Residential</a></li>
+                                <li><a href="/adds/propertyType/Commercial">Commercial</a></li>
+
+                            </ul>
+
+                            <h5>Purpose</h5>
+                            <ul>
+                                <li><a href="/adds/purpose/Rent">For Rent</a></li>
+                                <li><a href="/adds/purpose/Sale">For Sale</a></li>
 
                             </ul>
 

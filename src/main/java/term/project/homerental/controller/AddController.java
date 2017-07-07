@@ -150,12 +150,26 @@ public class AddController {
     }
 
 
-    @RequestMapping("/adds/{propertyType}")
+    @RequestMapping("/adds/propertyType/{propertyType}")
     public String getAddsByPropertyType(Model model, @PathVariable("propertyType") String propertyType) {
 
         Search search=new Search();
         model.addAttribute("allCities", search.getAllCities());
         model.addAttribute("adds", addRepository.getAddsByPropertyType(propertyType));
+        model.addAttribute("search", search);
+
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String username=auth.getName();
+        model.addAttribute("username",username);
+        return "adds";
+    }
+
+    @RequestMapping("/adds/purpose/{purpose}")
+    public String getAddsByPurpose(Model model, @PathVariable("purpose")String purpose)
+    {
+        Search search=new Search();
+        model.addAttribute("allCities",search.getAllCities());
+        model.addAttribute("adds",addRepository.getAddsByPurpose(purpose));
         model.addAttribute("search", search);
 
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();

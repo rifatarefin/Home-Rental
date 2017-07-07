@@ -71,6 +71,14 @@ public class AddRepository {
         return jdbcTemplate.query(SQL,params,new ProductMapper());
     }
 
+    public List<Add>getAddsByPurpose(String purpose)
+    {
+        String SQL="SELECT * FROM ADD WHERE PURPOSE = :purpose";
+        Map<String,Object> params=new HashMap<>();
+        params.put("purpose",purpose);
+        return jdbcTemplate.query(SQL,params,new ProductMapper());
+    }
+
 
 
 
