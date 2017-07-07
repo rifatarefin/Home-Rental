@@ -24,12 +24,12 @@ public class AddRepository {
 
     public List<Add> getAllAdds() {
         Map<String, Object> params = new HashMap<String, Object>();
-        List<Add> result = jdbcTemplate.query("SELECT * FROM ADD", params, new ProductMapper());
+        List<Add> result = jdbcTemplate.query("SELECT * FROM ADD", params, new AddMapper());
 
         return result;
     }
 
-    private static final class ProductMapper implements RowMapper<Add> {
+    private static final class AddMapper implements RowMapper<Add> {
         public Add mapRow(ResultSet rs, int rowNum) throws SQLException {
 
             Add add = new Add();
@@ -59,7 +59,7 @@ public class AddRepository {
         String SQL = "SELECT * FROM ADD WHERE ID = :id";
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("id", addID);
-        return jdbcTemplate.queryForObject(SQL, params, new ProductMapper());
+        return jdbcTemplate.queryForObject(SQL, params, new AddMapper());
 
     }
 
@@ -68,7 +68,7 @@ public class AddRepository {
         String SQL="SELECT * FROM ADD WHERE PROPERTY_TYPE =:propertyType";
         Map<String, Object> params= new HashMap<>();
         params.put("propertyType",propertyType);
-        return jdbcTemplate.query(SQL,params,new ProductMapper());
+        return jdbcTemplate.query(SQL,params,new AddMapper());
     }
 
     public List<Add>getAddsByPurpose(String purpose)
@@ -76,8 +76,9 @@ public class AddRepository {
         String SQL="SELECT * FROM ADD WHERE PURPOSE = :purpose";
         Map<String,Object> params=new HashMap<>();
         params.put("purpose",purpose);
-        return jdbcTemplate.query(SQL,params,new ProductMapper());
+        return jdbcTemplate.query(SQL,params,new AddMapper());
     }
+
 
 
 
@@ -85,7 +86,7 @@ public class AddRepository {
     public List<Add> getAddssByFilter(Map<String, List<String>> filterParams) {
         String SQL = "SELECT * FROM ADD WHERE PROPERTY_TYPE IN ( :ptype ) AND PURPOSE IN ( :purpose)";
 
-        return jdbcTemplate.query(SQL, filterParams, new ProductMapper());
+        return jdbcTemplate.query(SQL, filterParams, new AddMapper());
     }
 
     public List<Add> getAddsByCustomSearch(Search search)
@@ -103,7 +104,7 @@ public class AddRepository {
         params.put("maxbed",search.getMaxBed());
         params.put("minbath",search.getMinBath());
         params.put("maxbath",search.getMaxBath());
-        return jdbcTemplate.query(SQL,params,new ProductMapper());
+        return jdbcTemplate.query(SQL,params,new AddMapper());
     }
 
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import term.project.homerental.domain.Add;
 import term.project.homerental.domain.AddRepository;
+import term.project.homerental.domain.FlatRepository;
 import term.project.homerental.domain.Search;
 
 import javax.servlet.ServletOutputStream;
@@ -29,6 +30,9 @@ public class AddController {
 
     @Autowired
     private AddRepository addRepository;
+
+    @Autowired
+    private FlatRepository flatRepository;
 
     @InitBinder("newAdd")
     public void initialiseBinder(WebDataBinder binder) {
@@ -178,9 +182,22 @@ public class AddController {
         return "adds";
     }
 
+    @RequestMapping("/user")
+    public String getUserProperty(Model model)
+
+    {
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String username=auth.getName();
+        model.addAttribute("username",username);
+        model.addAttribute("properties",flatRepository.getProperties(username));
+
+        return "properties";
+    }
+
 
     @RequestMapping("/adds/filter/{params}")
     public String getAddssByFilter(@MatrixVariable(pathVar = "params") Map<String, List<String>> filterParams, Model model) {
+
         model.addAttribute("adds", addRepository.getAddssByFilter(filterParams));
         return "adds";
     }
