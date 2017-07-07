@@ -8,12 +8,21 @@ INSERT INTO PRODUCTS VALUES ('P1235', 'Dell Inspiron',
 INSERT INTO PRODUCTS VALUES ('P1236', 'Nexus 7',
                      'Google Nexus 7 is the lightest 7 inch tablet With a quad-core Qualcomm Snapdragon� S4 Pro processor',
                       300,'Google','Tablet','New',1000,0,false);
-INSERT INTO USERS VALUES ('john', 'pa55word',1);
-INSERT INTO USERS VALUES ('admin', 'root123', 1);
+
+INSERT INTO USERS VALUES ('admin', 'root123', 1, DEFAULT );
+INSERT INTO USERS VALUES ('john', 'pa55word',1,5678 );
+INSERT INTO USERS VALUES ('smith', 'pa55word', 1, 5679);
+INSERT INTO USERS VALUES ('mark', 'pa55word', 1, 5680);
+INSERT INTO USERS VALUES ('roger', 'pa55word', 1, 5670);
+
 
 INSERT INTO USER_ROLE VALUES (DEFAULT ,'john','ROLE_USER');
 INSERT INTO USER_ROLE VALUES (DEFAULT ,'admin','ROLE_ADMIN');
 INSERT INTO USER_ROLE VALUES (DEFAULT ,'admin', 'ROLE_USER');
+INSERT INTO USER_ROLE VALUES (DEFAULT ,'smith','ROLE_USER');
+INSERT INTO USER_ROLE VALUES (DEFAULT ,'mark','ROLE_USER');
+INSERT INTO USER_ROLE VALUES (DEFAULT ,'roger','ROLE_USER');
+
 
 INSERT INTO ADD VALUES (DEFAULT ,'Apartment for Rent', 101, 5678,'John','Residential',
                     'Rent','Dhanmondi','Dhaka','Road 3/4',25000,1340,3,2,FILE_READ('/home/rifat/Pictures/pic/18155836_10154589741593157_8705498974745257520_o.jpg'));

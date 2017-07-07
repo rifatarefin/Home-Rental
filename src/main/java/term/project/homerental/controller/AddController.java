@@ -1,11 +1,8 @@
 package term.project.homerental.controller;
 
-import term.project.homerental.domain.Add;
-import term.project.homerental.domain.AddRepository;
-import term.project.homerental.domain.Product;
-import term.project.homerental.domain.Search;
-import term.project.homerental.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -13,6 +10,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
+import term.project.homerental.domain.Add;
+import term.project.homerental.domain.AddRepository;
+import term.project.homerental.domain.Product;
+import term.project.homerental.domain.Search;
+import term.project.homerental.service.ProductService;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +25,7 @@ import java.util.Map;
 
 @Controller
 public class AddController {
+
 
     @Autowired
     private ProductService productService;
@@ -83,6 +86,10 @@ public class AddController {
         model.addAttribute("add", addRepository.getAddById(addId));
         session.setAttribute("add", addRepository.getAddById(addId));
 
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String username=auth.getName();
+        model.addAttribute("username",username);
+
         return "add";
     }
 
@@ -94,6 +101,10 @@ public class AddController {
         model.addAttribute("allCities", search.getAllCities());
         model.addAttribute("adds", addRepository.getAllAdds());
         model.addAttribute("search", search);
+
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String username=auth.getName();
+        model.addAttribute("username",username);
 
 
         return "adds";
@@ -107,6 +118,10 @@ public class AddController {
         model.addAttribute("allCities", search.getAllCities());
         System.out.println(search.getMinBed());
 
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String username=auth.getName();
+        model.addAttribute("username",username);
+
 
         return "adds";
     }
@@ -116,6 +131,10 @@ public class AddController {
     public String getPlaceAdd(Model model) {
         Add newAdd = new Add();
         model.addAttribute("newAdd", newAdd);
+
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String username=auth.getName();
+        model.addAttribute("username",username);
         return "newAdd";
     }
 
@@ -128,7 +147,7 @@ public class AddController {
             throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
         }
 
-        //System.out.println(newAdd.getImage().length);
+
         addRepository.placeNewAdd(newAdd);
         return "redirect:/adds";
     }
@@ -141,6 +160,10 @@ public class AddController {
         model.addAttribute("allCities", search.getAllCities());
         model.addAttribute("adds", addRepository.getAddsByPropertyType(propertyType));
         model.addAttribute("search", search);
+
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String username=auth.getName();
+        model.addAttribute("username",username);
         return "adds";
     }
 

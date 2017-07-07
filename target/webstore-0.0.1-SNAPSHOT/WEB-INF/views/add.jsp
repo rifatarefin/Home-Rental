@@ -40,7 +40,17 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
-                <li class="active"><a href="/adds/new" >Place Add </a></li>
+                <li ><a href="/adds/new" >Place Add </a></li>
+
+                <c:if test="${username=='anonymousUser'}">
+
+                    <li><a href="<c:url value="/login" />">Login</a></li>
+                </c:if>
+                <c:if test="${username!='anonymousUser'}">
+                    <li><a href="<c:url value="/logout" />">Logout</a></li>
+                    <li><a><strong>${username}</strong></a></li>
+                </c:if>
+
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -86,16 +96,16 @@
                 <strong>Location : </strong><span class="label label-warning">${add.location}</span>
             </p>
             <p>
-                <strong>Property Type: </strong> : ${add.propertyType}
+                <strong>Property Type: </strong>  ${add.propertyType}
             </p>
             <p>
-                <strong>Flat Size: </strong> : ${add.sqFeet}
+                <strong>Flat Size: </strong>  ${add.sqFeet}
             </p>
             <p>
-                <strong>Number of Bedrooms: </strong> : ${add.bed}
+                <strong>Number of Bedrooms: </strong>  ${add.bed}
             </p>
             <p>
-                <strong>Number of Bathrooms: </strong> : ${add.bath}
+                <strong>Number of Bathrooms: </strong>  ${add.bath}
             </p>
             <h4><strong>Rent: </strong>${add.price} Taka</h4>
             <p>
