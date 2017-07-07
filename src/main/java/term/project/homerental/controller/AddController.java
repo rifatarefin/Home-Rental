@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import term.project.homerental.domain.Add;
 import term.project.homerental.domain.AddRepository;
-import term.project.homerental.domain.Product;
 import term.project.homerental.domain.Search;
-import term.project.homerental.service.ProductService;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -27,8 +25,7 @@ import java.util.Map;
 public class AddController {
 
 
-    @Autowired
-    private ProductService productService;
+
 
     @Autowired
     private AddRepository addRepository;
@@ -178,54 +175,7 @@ public class AddController {
     //////////////////
 
 
-    @RequestMapping("/products")
-    public String list(Model model) {
-        model.addAttribute("products", productService.getAllProducts());
-        return "products";
-    }
 
-    @RequestMapping("/update/stock")
-    public String updateStock(Model model) {
-        productService.updateAllStock();
-        return "redirect:/products";
-    }
-
-    @RequestMapping("/products/{category}")
-    public String getProductsByCategory(Model model, @PathVariable("category") String productCategory) {
-        model.addAttribute("products", productService.getProductsByCategory(productCategory));
-        return "products";
-    }
-
-    @RequestMapping("/products/filter/{params}")
-    public String getProductsByFilter(@MatrixVariable(pathVar = "params") Map<String, List<String>> filterParams, Model model) {
-        model.addAttribute("products", productService.getProductsByFilter(filterParams));
-        return "products";
-    }
-
-    @RequestMapping("/product")
-    public String getProductById(@RequestParam("id") String productId, Model model) {
-        model.addAttribute("product", productService.getProductById(productId));
-        return "product";
-    }
-
-    @RequestMapping(value = "/products/add", method = RequestMethod.GET)
-    public String getAddNewProductForm(Model model) {
-        Product newProduct = new Product();
-        model.addAttribute("newProduct", newProduct);
-        return "addProduct";
-    }
-
-    @RequestMapping(value = "/products/add", method = RequestMethod.POST)
-    public String processAddNewProductForm(@ModelAttribute("newProduct") Product newProduct, BindingResult result) {
-
-        String[] suppressedFields = result.getSuppressedFields();
-        if (suppressedFields.length > 0) {
-            throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
-        }
-
-        productService.addProduct(newProduct);
-        return "redirect:/market/products";
-    }
 
     @InitBinder
     public void initMultipartConverter(WebDataBinder webDataBinder) {
