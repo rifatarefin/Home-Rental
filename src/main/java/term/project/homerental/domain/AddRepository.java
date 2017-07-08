@@ -110,6 +110,12 @@ public class AddRepository {
 
     public void placeNewAdd(Add newAdd) {
 
+        String s1="SELECT USER_ID FROM USERS WHERE USERNAME = :name";
+        Map<String, Object> p1 = new HashMap<>();
+        p1.put("name",newAdd.getOwnersName());
+        Object ownerid=jdbcTemplate.queryForObject(s1,p1,Integer.class);
+        newAdd.setOwnerId((Integer) ownerid);
+
 
         String SQL = "INSERT INTO ADD (ID, "
                 + "TITLE,"
@@ -147,6 +153,11 @@ public class AddRepository {
 
 
         jdbcTemplate.update(SQL, params);
+        params.clear();
+
+
+
+
     }
 
 }

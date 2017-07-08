@@ -148,6 +148,9 @@ public class AddController {
             throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
         }
 
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String username=auth.getName();
+        newAdd.setOwnersName(username);
 
         addRepository.placeNewAdd(newAdd);
         return "redirect:/adds";
