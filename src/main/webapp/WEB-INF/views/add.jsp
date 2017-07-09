@@ -112,7 +112,7 @@
                    class="btn btn-default"> <span
                         class="glyphicon-hand-left glyphicon"></span> back
                 </a> <a href="#" class="btn btn-warning btn-large"> <span
-                    class="glyphicon-shopping-cart glyphicon"></span> Order Now
+                    class="glyphicon-shopping-cart glyphicon"></span> Place Request
             </a>
             </p>
         </div>

@@ -103,6 +103,21 @@ public class AddController {
         return "add";
     }
 
+    @RequestMapping("/request")
+    public void placeRequest(@RequestParam("id") int flatId, Model model)
+    {
+        Tenant tenant=new Tenant();
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String username=auth.getName();
+
+        tenant.setUsername(username);
+        model.addAttribute("username",username);
+
+
+
+
+    }
+
     @RequestMapping(value = "/adds", method = RequestMethod.GET)
     public String list2(Model model) {
         Search search = new Search();

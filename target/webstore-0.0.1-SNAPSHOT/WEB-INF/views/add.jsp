@@ -47,7 +47,7 @@
                 </c:if>
                 <c:if test="${username!='anonymousUser'}">
                     <li><a href="<c:url value="/logout" />">Logout</a></li>
-                    <li><a><strong>${username}</strong></a></li>
+                    <li><a href="/user"><strong>${username}</strong></a></li>
                 </c:if>
 
             </ul>
@@ -112,7 +112,7 @@
                    class="btn btn-default"> <span
                         class="glyphicon-hand-left glyphicon"></span> back
                 </a> <a href="#" class="btn btn-warning btn-large"> <span
-                    class="glyphicon-shopping-cart glyphicon"></span> Order Now
+                    class="glyphicon-shopping-cart glyphicon"></span> Place Request
             </a>
             </p>
         </div>

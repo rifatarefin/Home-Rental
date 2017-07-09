@@ -153,7 +153,6 @@ public class AddRepository {
 
 
         jdbcTemplate.update(SQL, params);
-        params.clear();
 
 
 
