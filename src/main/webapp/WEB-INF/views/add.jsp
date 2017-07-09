@@ -47,7 +47,7 @@
                 </c:if>
                 <c:if test="${username!='anonymousUser'}">
                     <li><a href="<c:url value="/logout" />">Logout</a></li>
-                    <li><a><strong>${username}</strong></a></li>
+                    <li><a href="/user"><strong>${username}</strong></a></li>
                 </c:if>
 
             </ul>

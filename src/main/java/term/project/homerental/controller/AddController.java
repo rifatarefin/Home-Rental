@@ -10,10 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
-import term.project.homerental.domain.Add;
-import term.project.homerental.domain.AddRepository;
-import term.project.homerental.domain.FlatRepository;
-import term.project.homerental.domain.Search;
+import term.project.homerental.domain.*;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -80,6 +77,18 @@ public class AddController {
         outputStream.flush();
         outputStream.close();
     }
+
+    @RequestMapping("/user/img")
+    public void image(@RequestParam int flatId, HttpServletResponse response) throws IOException {
+        Flat flat=flatRepository.getFlatById(flatId);
+        response.setContentType("image");
+        ServletOutputStream outputStream=response.getOutputStream();
+        outputStream.write(flat.getImage());
+        outputStream.flush();
+        outputStream.close();
+    }
+
+
 
 
     @RequestMapping("/add")

@@ -53,4 +53,15 @@ public class FlatRepository {
         return jdbcTemplate.query(SQL,params,new FlatMapper());
     }
 
+
+
+    public Flat getFlatById(int flatId)
+    {
+        String SQL="SELECT * FROM FLAT WHERE FLAT_ID= :id";
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id", flatId);
+        return jdbcTemplate.queryForObject(SQL,params,new FlatMapper());
+
+    }
+
 }
